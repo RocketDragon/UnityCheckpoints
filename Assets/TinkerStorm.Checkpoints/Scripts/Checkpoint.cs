@@ -14,11 +14,11 @@ namespace TinkerStorm.Checkpoints
             isTrigger = GetComponent<Collider>().isTrigger;
         }
 
-        protected void Run(Transform transform)
+        protected void Run(Transform other)
         {
-            if(transform.CompareTag(targetTag))
+            if(other.CompareTag(targetTag))
             {
-                transform.GetComponent<Respawnable>().SetRespawnAt(transform);
+                other.GetComponent<Respawnable>().SetRespawnAt(other);
             }
         }
 
@@ -34,5 +34,4 @@ namespace TinkerStorm.Checkpoints
                 Run(other.transform);
         }
     }
-
 }

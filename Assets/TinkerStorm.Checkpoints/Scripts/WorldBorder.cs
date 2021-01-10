@@ -13,18 +13,18 @@ namespace TinkerStorm.Checkpoints
             isTrigger = GetComponent<Collider>().isTrigger;
         }
 
-        protected void Run(Transform transform)
+        protected void Run(Transform other)
         {
-            Respawnable respawner = transform.GetComponent<Respawnable>();
+            Respawnable respawner = other.GetComponent<Respawnable>();
 
             if(respawner)
                 respawner.Respawn();
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision other)
         {
             if (!isTrigger)
-                Run(collision.transform);
+                Run(other.transform);
         }
 
         private void OnTriggerEnter(Collider other)

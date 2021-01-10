@@ -7,16 +7,16 @@ namespace TinkerStorm.Checkpoints
     public class DebugTeleporter : MonoBehaviour
     {
         [SerializeField]
-        Transform destination;
+        private Transform destination;
 
-        bool isTrigger;
+        private bool isTrigger;
 
-        void Start()
+        private void Start()
         {
             isTrigger = GetComponent<Collider>().isTrigger;
         }
 
-        void Run(Transform other)
+        private void Run(Transform other)
         {
             Respawnable respawner = other.GetComponent<Respawnable>();
             if(respawner != null)
@@ -26,13 +26,13 @@ namespace TinkerStorm.Checkpoints
             }
         }
 
-        void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter(Collision other)
         {
             if (!isTrigger)
                 Run(other.transform);
         }
 
-        void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (isTrigger)
                 Run(other.transform);
