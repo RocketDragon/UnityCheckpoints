@@ -14,6 +14,8 @@ namespace TinkerStorm.Checkpoints
 
         public void Respawn()
         {
+            if (!enabled) return;
+
             transform.position = respawnPosition;
             transform.rotation = respawnRotation;
         }
@@ -25,6 +27,8 @@ namespace TinkerStorm.Checkpoints
 
         public void SetRespawnAt(Vector3 position, Quaternion rotation)
         {
+            if (!enabled) return;
+
             respawnPosition = position;
             respawnRotation = rotation;
         }
